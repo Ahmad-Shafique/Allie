@@ -8,7 +8,7 @@ using AllieEntity;
 
 namespace AllieData.DataAccessors
 {
-    // for the time being only getall and insert is done...
+    // for the time being only get all and insert is done...
     class CompanyDataAccessor : ICompanyDataAccessor
     {
         private AllieContext context;
