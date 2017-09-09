@@ -132,6 +132,7 @@
     <Compile Include="Models\UserContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidationClasses\ValidateCompany.cs" />
+    <Compile Include="ValidationClasses\ValidateUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
