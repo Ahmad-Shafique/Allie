@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+
+Search &nbsp &nbsp <input type="text" \> <button><img src="http://ImageUrl" alt="Search glyphicon" /></button>
+<br><br><br>
+<table>
+
+    <tr>
+        <th>User Name</th>
+        <th>&nbsp Address</th>
+        <th> &nbsp  Phone</th>
+        <th> &nbsp Email</th>
+        <th> &nbsp Role</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+            <td>@Html.DisplayFor(modelItem => item.Address)</td>
+            <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+            <td>@Html.DisplayFor(modelItem => item.Email)</td>
+            <td>@Html.DisplayFor(modelItem => item.Role)</td>
+            <td>
+                <a href="/Employee/Edit/@item.UserId"><i class="glyphicon glyphicon-edit"></i></a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="/Employee/Delete/@item.UserId"><i class="glyphicon glyphicon-trash"></i></a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+

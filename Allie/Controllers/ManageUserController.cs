@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace Allie.Controllers
 {
-    public class UserHomeController : Controller
+    public class ManageUserController : Controller
     {
-        // GET: UserHome
+        // GET: ManageUser
         public ActionResult Index()
         {
             return View();
