@@ -6,14 +6,12 @@ using System.Web.Mvc;
 
 namespace Allie.Controllers
 {
-    public class CompanyController : BaseController
+    public class AccountController : Controller
     {
-        // GET: Company
+        // GET: Account
         public ActionResult Index()
         {
             return View();
         }
-
-        
     }
 }
