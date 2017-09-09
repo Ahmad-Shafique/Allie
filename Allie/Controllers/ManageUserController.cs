@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AllieEntity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,23 @@ namespace Allie.Controllers
     {
         // GET: ManageUser
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Edit()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Edit(User u)
         {
             return View();
         }

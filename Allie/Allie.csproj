@@ -144,8 +144,9 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\UserHome\UserHome.cshtml" />
+    <Content Include="Views\UserHome\Index.cshtml" />
     <Content Include="Views\ManageUser\Edit.cshtml" />
+    <Content Include="Views\ManageUser\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

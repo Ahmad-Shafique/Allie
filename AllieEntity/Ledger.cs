@@ -9,6 +9,5 @@ namespace AllieEntity
         public int LedgerId { get; set; }
         public string LedgerName { get; set; }
         public DateTime LedgerPeriod{ get; set; }
-        public int  JournalId { get; set; }
     }
 }
