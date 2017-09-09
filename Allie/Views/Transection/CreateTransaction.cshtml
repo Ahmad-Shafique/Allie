@@ -1,0 +1,69 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateTransection</title>
+</head>
+<body>
+    <fieldset>
+        <legend> Create Transection </legend>
+        <table align="right">
+            <tr>
+                <td>login As:</td>
+                <td>
+                    <lable>LoginId</lable>/>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr align="center">
+                <td>
+                    Transection Description<br>
+                </td>
+                <td>
+                    <textarea rows="4" cols="50"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Transection Amount
+                </td>
+                <td>
+                    <input type="number" name="transectionAmount" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Transection Type
+                </td>
+                <td>
+                    <select>
+                        <option value="volvo">Cash</option>
+                        <option value="saab">Check</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Journal
+                </td>
+                <td>
+                    <input type="text" name="Journal" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="button" value="OK"/> <input type="button" value="cancel" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+</body>
+</html>
