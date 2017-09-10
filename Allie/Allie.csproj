@@ -155,6 +155,8 @@
     <Content Include="Views\Ledger\ManagLedger.cshtml" />
     <Content Include="Views\Transection\CreateTransaction.cshtml" />
     <Content Include="Views\Transection\ManageTransaction.cshtml" />
+    <Content Include="Views\Home\ViewOne.cshtml" />
+    <Content Include="Views\Home\ViewTwo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -14,6 +14,7 @@ namespace Allie.Models
 
         public static bool Validate(LogIn log)
         {
+            /*
             int valid = 0;
             if (log.UserMail != null && log.Password != null)
             {
@@ -27,6 +28,8 @@ namespace Allie.Models
                 return true;
             else
                 return false;
+                */
+            return true;
         }
     }
 }

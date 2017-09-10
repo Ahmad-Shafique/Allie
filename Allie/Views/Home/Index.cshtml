@@ -17,6 +17,10 @@
         <div>
             <a href="/Login/Index">Login</a> &nbsp; <a href="/Home/CreateCompany">Start for your company</a>
         </div>
+        <div name="Test redirect div">
+            @Html.ActionLink("View One", "ViewOne", "Home", new {para = "one" }, null)
+            @Html.ActionLink("View Two", "ViewTwo", "Home", new { para = "one" }, null)
+        </div>
     </div>
 </body>
 </html>
