@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace AllieService.ServiceInterfaces
 {
-    public interface IAccountTypeServices
+    public interface ITransactionServices
     {
-        IEnumerable<AccountType> GetAll();
-        AccountType Get(int id);
-        void Insert(AccountType accType);
-        void Update(AccountType accType);
+        IEnumerable<Transaction> GetAll();
+        Transaction Get(int id);
+        void Insert(Transaction tran);
+        void Update(Transaction tran);
         void Delete(int id);
     }
 }
