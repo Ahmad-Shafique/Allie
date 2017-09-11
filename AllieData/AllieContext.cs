@@ -9,6 +9,8 @@ namespace AllieData
 {
     public class AllieContext : DbContext
     {
+        
+
         public DbSet<Company> Companies { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserType> UserTypes { get; set; }

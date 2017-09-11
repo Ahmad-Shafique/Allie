@@ -17,10 +17,11 @@ namespace AllieData.DataAccessors
             this.context = context;
         }
 
-        public void Insert(Company company)
+        public Company Insert(Company company)
         {
             context.Companies.Add(company);
             context.SaveChanges();
+            return context.Companies.SingleOrDefault(x => x.CompanyName == company.CompanyName);
         }
 
         public void Delete(int id)
@@ -45,6 +46,10 @@ namespace AllieData.DataAccessors
         public Company Get(int id)
         {
             return context.Companies.SingleOrDefault(x => x.Id == id);
+        }
+        public Company Get(string name)
+        {
+            return context.Companies.SingleOrDefault(x => x.CompanyName == name);
         }
 
         public IEnumerable<Company> GetAll()

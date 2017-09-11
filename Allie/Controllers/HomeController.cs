@@ -28,7 +28,7 @@ namespace Allie.Controllers
         [HttpGet]
         public ActionResult CreateCompany()
         {
-            return View();
+            return RedirectToAction("Create", "Company");
         }
         [HttpPost]
         public ActionResult CreateCompany(Company c)
