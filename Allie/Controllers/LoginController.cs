@@ -24,7 +24,7 @@ namespace Allie.Controllers
                 Session["LoggedIn"] = true;
                 Session["UserMail"] = log.UserMail;
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "UserHome");
             }
             else
                 return RedirectToAction("Index");
