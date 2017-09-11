@@ -59,6 +59,7 @@ namespace AllieData.DataAccessors
             u.Password = password;
 
             context.SaveChanges();
+            
         }
     }
 }
