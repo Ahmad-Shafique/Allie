@@ -3,7 +3,7 @@
     ViewBag.Title = "UserHome";
 }
 
-<h1>Home</h1>
+@*<h1>Home</h1>
 
 
 <select>
@@ -31,7 +31,119 @@
 <br><br><br>
 Allie Solutions Limited<br>
 H3, R11<br>
-Nikunja-2<br>
+Nikunja-2<br>*@
 
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: forestgreen;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Dropdown Menu</h2>
+<div align="center">
+    <table width="70%">
+        <tr>
+            <td>
+                <div class="dropdown">
+                    <button class="dropbtn">Account</button>
+                    <div class="dropdown-content">
+                        <a href="/Home/CreateCompany">CreateAccount</a>
+                        <a href="/Home/CreateCompany">Manage Account</a>
+
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button class="dropbtn">Ledger</button>
+                    <div class="dropdown-content">
+                        @Html.ActionLink("Create Ledger", "CreateLedger","Ledger")
+                        @Html.ActionLink("Manage Ledger", "ManageLedger", "Ledger")
+
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button class="dropbtn">Transaction</button>
+                    <div class="dropdown-content">
+                        @Html.ActionLink("Create Transaction", "CreateTransaction", "Transaction")
+                        @Html.ActionLink("Manage Transaction", "ManageTransaction", "Transaction")
+
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button class="dropbtn">Voucher</button>
+                    <div class="dropdown-content">
+                        <a href="#">Create Voucher</a>
+                        <a href="#">Manage Voucher</a>
+
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button class="dropbtn">BalanceSheet</button>
+                    <div class="dropdown-content">
+                        <a href="#">Profit Sheet</a>
+                        <a href="#">Lose Sheet</a>
+
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+    </div>
+
+
+
+</body>
+</html>
 
 

@@ -1,5 +1,4 @@
-﻿using AllieService;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,22 +9,13 @@ namespace Allie.Controllers
     public class TransactionController : Controller
     {
         // GET: Transaction
-        public ActionResult Index()
+        public ActionResult CreateTransaction()
         {
             return View();
         }
-
-        [HttpGet]
-        public ActionResult Create()
-        {
-            
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Create(FormCollection form)
+        public ActionResult ManageTransaction()
         {
             return View();
         }
-
     }
 }

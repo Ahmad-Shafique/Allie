@@ -50,5 +50,10 @@ namespace AllieService
         {
             return new TransactionDetailServices(DataAccessorFactory.GetTransactionDetailAccessor());
         }
+
+        public static ILedgerServices GetLedgerServices()
+        {
+            return new LedgerServices(DataAccessorFactory.GetLedgerDataAccessor());
+        }
     }
 }
