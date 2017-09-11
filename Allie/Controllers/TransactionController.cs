@@ -1,7 +1,4 @@
-﻿using Allie.Models;
-using AllieEntity;
-using AllieService;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,144 +6,16 @@ using System.Web.Mvc;
 
 namespace Allie.Controllers
 {
-    public class TransactionController : BaseController
+    public class TransactionController : Controller
     {
         // GET: Transaction
-        public ActionResult Index()
+        public ActionResult CreateTransaction()
         {
-            return View(ServiceFactory.GetTransactionServices().GetAll((int)Session["CompanyId"]));
-        }
-
-        [HttpGet]
-        public ActionResult Create()
-        {
-            List<Account> accList = (List<Account>) ServiceFactory.GetAccountServices().GetAll((int)Session["CompanyId"]);
-            List<SelectListItem> itemList = new List<SelectListItem>();
-
-            foreach(Account acc in accList)
-            {
-                SelectListItem item = new SelectListItem();
-                item.Text = acc.AccountDescription;
-                item.Value = acc.Id.ToString();
-                
-                itemList.Add(item);
-            }
-            SelectListItem temp = new SelectListItem()
-            {
-                Text = "none",
-                Value = "none",
-            };
-            temp.Selected = true;
-            itemList.Add(temp);
-
-            ViewBag.SelectList = itemList;
-            ViewBag.AccountList = accList;
             return View();
         }
-
-        [HttpPost]
-        public ActionResult Create(FormCollection form)
+        public ActionResult ManageTransaction()
         {
-            Transaction transaction = new Transaction();
-            TransactionDetail sourceDetail = new TransactionDetail();
-            TransactionDetail destDetail = new TransactionDetail();
-
-            transaction.TransactionAmount = Convert.ToDouble(form["SourceAcc_Amount"]);
-            transaction.TransactionDate = Convert.ToDateTime(form["TransactionDate"]).Date;
-            transaction.TransactionDescription = form["Description"];
-            transaction.CompanyId = (int)Session["CompanyId"];
-
-            ServiceFactory.GetTransactionServices().Insert(transaction);
-
-            sourceDetail.AccountId = Convert.ToInt32(form["SourceAcc_Account"]);
-            sourceDetail.Amount = transaction.TransactionAmount;
-            sourceDetail.TransactionId = transaction.Id;
-            sourceDetail.TransactionType = ServiceFactory.GetTransactionTypeServices().Get(form["SourceAcc_TransactionType"]).Id;
-            
-            destDetail.AccountId = Convert.ToInt32(form["DestAcc_Account"]);
-            destDetail.Amount = transaction.TransactionAmount;
-            destDetail.TransactionId = transaction.Id;
-            destDetail.TransactionType = ServiceFactory.GetTransactionTypeServices().Get(form["DestAcc_TransactionType"]).Id;
-
-            ServiceFactory.GetTransactionDetailServices().Insert(sourceDetail);
-            ServiceFactory.GetTransactionDetailServices().Insert(destDetail);
-
-            ServiceFactory.GetAccountServices().CashOut(sourceDetail.AccountId, sourceDetail.Amount);
-            ServiceFactory.GetAccountServices().CashIn(destDetail.AccountId, destDetail.Amount);
-
-            return RedirectToAction("Index", "Company");
-        }
-
-        [HttpGet]
-        public ActionResult Details(int id)
-        {
-            Transaction t = ServiceFactory.GetTransactionServices().Get(id);
-            ViewBag.Transaction = t;
-            return View(ServiceFactory.GetTransactionDetailServices().GetAll(t.Id));
-        }
-
-        [HttpPost]
-        public string GetTransactionType(int accId, bool source)
-        {
-            return ServiceFactory.GetTransactionTypeServices().Get(accId, source).Type;
-        }
-
-        [HttpGet]
-        public ActionResult AddTransaction(int id)
-        {
-            Transaction t = ServiceFactory.GetTransactionServices().Get(id);
-            List<Account> accList = (List<Account>)ServiceFactory.GetAccountServices().GetAll((int)Session["CompanyId"]);
-            List<SelectListItem> itemList = new List<SelectListItem>();
-
-            foreach (Account acc in accList)
-            {
-                SelectListItem item = new SelectListItem();
-                item.Text = acc.AccountDescription;
-                item.Value = acc.Id.ToString();
-
-                itemList.Add(item);
-            }
-            SelectListItem temp = new SelectListItem()
-            {
-                Text = "none",
-                Value = "none",
-            };
-            temp.Selected = true;
-            itemList.Add(temp);
-
-            ViewBag.SelectList = itemList;
-            ViewBag.Transaction = t;
             return View();
-        }
-        [HttpPost]
-        public ActionResult AddTransaction(FormCollection form)
-        {
-            Transaction transaction = ServiceFactory.GetTransactionServices().Get(Convert.ToInt32(form["TransactionId"]));
-            double amount = Convert.ToDouble(form["SourceAcc_Amount"]);
-            transaction.TransactionAmount += amount;
-
-            ServiceFactory.GetTransactionServices().Update(transaction);
-
-            TransactionDetail sourceDetail = new TransactionDetail();
-            TransactionDetail destDetail = new TransactionDetail();
-
-            sourceDetail.AccountId = Convert.ToInt32(form["SourceAcc_Account"]);
-            sourceDetail.Amount = amount;
-            sourceDetail.TransactionId = transaction.Id;
-            sourceDetail.TransactionType = ServiceFactory.GetTransactionTypeServices().Get(form["SourceAcc_TransactionType"]).Id;
-
-            destDetail.AccountId = Convert.ToInt32(form["DestAcc_Account"]);
-            destDetail.Amount = amount;
-            destDetail.TransactionId = transaction.Id;
-            destDetail.TransactionType = ServiceFactory.GetTransactionTypeServices().Get(form["DestAcc_TransactionType"]).Id;
-
-            ServiceFactory.GetTransactionDetailServices().Insert(sourceDetail);
-            ServiceFactory.GetTransactionDetailServices().Insert(destDetail);
-
-            ServiceFactory.GetAccountServices().CashOut(sourceDetail.AccountId, sourceDetail.Amount);
-            ServiceFactory.GetAccountServices().CashIn(destDetail.AccountId, destDetail.Amount);
-            
-            return RedirectToAction("Details", new { id = transaction.Id});
         }
     }
 }

@@ -49,5 +49,10 @@ namespace AllieData
         {
             return new TransactionDetailDataAccessor(new AllieContext());
         }
+
+        public static ILedgerDataAccessor GetLedgerDataAccessor()
+        {
+            return new LedgerDataAccessor(new AllieContext());
+        }
     }
 }

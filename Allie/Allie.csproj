@@ -127,6 +127,7 @@
     <Compile Include="Controllers\LedgerController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageUserController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserHomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -155,8 +156,8 @@
     <Content Include="Views\ManageUser\Create.cshtml" />
     <Content Include="Views\Ledger\CreateLedger.cshtml" />
     <Content Include="Views\Ledger\ManagLedger.cshtml" />
-    <Content Include="Views\Transection\CreateTransaction.cshtml" />
-    <Content Include="Views\Transection\ManageTransaction.cshtml" />
+    <Content Include="Views\Transaction\CreateTransaction.cshtml" />
+    <Content Include="Views\Transaction\ManageTransaction.cshtml" />
     <Content Include="Views\User\UserView.cshtml" />
     <Content Include="Views\Company\Create.cshtml" />
     <Content Include="Views\User\CreateUser.cshtml" />

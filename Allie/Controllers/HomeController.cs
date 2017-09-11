@@ -71,5 +71,17 @@ namespace Allie.Controllers
                 return View();
             }
         }
+
+        //[HttpPost]
+        public ActionResult ViewOne(string s)
+        {
+            return View();
+        }
+
+        public ActionResult ViewTwo()
+        {
+            return View();
+        }
+
     }
 }
