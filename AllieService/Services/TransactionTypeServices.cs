@@ -31,21 +31,7 @@ namespace AllieService.Services
         {
             return accessor.Get(type);
         }
-
-        public TransactionType Get(int accountType, bool isSource)
-        {
-            if (isSource)
-            {
-                string tranType = Decrease(ServiceFactory.GetAccountTypeServices().Get(accountType).Type);
-                return this.Get(tranType);
-            }
-            else
-            {
-                string tranType = Increase(ServiceFactory.GetAccountTypeServices().Get(accountType).Type);
-                return this.Get(tranType);
-            }
-        }
-
+        
         public IEnumerable<TransactionType> GetAll()
         {
             return accessor.GetAll();
@@ -60,14 +46,34 @@ namespace AllieService.Services
         {
             accessor.Update(tType);
         }
+        
+        public TransactionType Get(int accId, bool isSource)
+        {
+            if (isSource)
+            {
+                Account acc = ServiceFactory.GetAccountServices().Get(accId);
+                AccountType accType = ServiceFactory.GetAccountTypeServices().Get(acc.AccountType);
+                string tranType = Decrease(accType.Type);
+                return this.Get(tranType);
+            }
+            else
+            {
+                Account acc = ServiceFactory.GetAccountServices().Get(accId);
+                AccountType accType = ServiceFactory.GetAccountTypeServices().Get(acc.AccountType);
+                string tranType = Increase(accType.Type);
+                return this.Get(tranType);
+            }
+            
+        }
 
         private string Increase(string accType)
         {
             const string credit = "Credit";
             const string debit = "Debit";
-
             switch (accType)
             {
+                case "Cash":
+                    return "Debit";
                 case "Capital":
                     return credit;
                 case "Expense":
@@ -81,14 +87,14 @@ namespace AllieService.Services
             }
             return null;
         }
-
         private string Decrease(string accType)
         {
             const string credit = "Credit";
             const string debit = "Debit";
-
             switch (accType)
             {
+                case "Cash":
+                    return "Credit";
                 case "Capital":
                     return debit;
                 case "Expense":
