@@ -25,5 +25,35 @@ namespace AllieService
         {
             return new UserServices(DataAccessorFactory.GetUserAccessor());
         }
+
+        public static IAccountServices GetAccountServices()
+        {
+            return new AccountServices(DataAccessorFactory.GetAccountAccessor());
+        }
+
+        public static IAccountTypeServices GetAccountTypeServices()
+        {
+            return new AccountTypeServices(DataAccessorFactory.GetAccountTypeAccessor());
+        }
+
+        public static ITransactionTypeServices GetTransactionTypeServices()
+        {
+            return new TransactionTypeServices(DataAccessorFactory.GetTransactionTypeAccessor());
+        }
+
+        public static ITransactionServices GetTransactionServices()
+        {
+            return new TransactionServices(DataAccessorFactory.GetTransactionAccessor());
+        }
+
+        public static ITransactionDetailServices GetTransactionDetailServices()
+        {
+            return new TransactionDetailServices(DataAccessorFactory.GetTransactionDetailAccessor());
+        }
+
+        public static ILedgerServices GetLedgerServices()
+        {
+            return new LedgerServices(DataAccessorFactory.GetLedgerDataAccessor());
+        }
     }
 }

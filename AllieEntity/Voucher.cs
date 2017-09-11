@@ -6,7 +6,7 @@ namespace AllieEntity
 {
     public class Voucher
     {
-        public int VoucherID { get; set; }
+        public int Id { get; set; }
         public float Amount { get; set; }
         public int VoucherCreator { get; set; }
         public int VoucherOwner { get; set; }

@@ -25,15 +25,19 @@ namespace AllieService.Services
         {
             return accessor.Get(id);
         }
+        public Company Get(string name)
+        {
+            return accessor.Get(name);
+        }
 
         public IEnumerable<Company> GetAll()
         {
             return accessor.GetAll();
         }
 
-        public void Insert(Company company)
+        public Company Insert(Company company)
         {
-            accessor.Insert(company);
+            return accessor.Insert(company);
         }
 
         public void Update(Company company)

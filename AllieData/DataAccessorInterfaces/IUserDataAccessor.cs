@@ -10,7 +10,7 @@ namespace AllieData.DataAccessorInterfaces
     public interface IUserDataAccessor
     {
         IEnumerable<User> GetAll();
-        User Get(int id);
+        User Get(string username);
         void Insert(User user);
         void Update(User user);
         void Delete(int id);

@@ -9,7 +9,8 @@ namespace AllieService.ServiceInterfaces
     {
         IEnumerable<Company> GetAll();
         Company Get(int id);
-        void Insert(Company company);
+        Company Get(string companuname);
+        Company Insert(Company company);
         void Update(Company company);
         void Delete(int id);
     }

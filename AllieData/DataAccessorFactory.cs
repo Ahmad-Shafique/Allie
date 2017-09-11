@@ -34,5 +34,25 @@ namespace AllieData
         {
             return new AccountTypeDataAccessor(new AllieContext());
         }
+
+        public static ITransactionTypeDataAccessor GetTransactionTypeAccessor()
+        {
+            return new TransactionTypeDataAccessor(new AllieContext());
+        }
+
+        public static ITransactionDataAccessor GetTransactionAccessor()
+        {
+            return new TransactionDataAccessor(new AllieContext());
+        }
+
+        public static ITransactionDetailDataAccessor GetTransactionDetailAccessor()
+        {
+            return new TransactionDetailDataAccessor(new AllieContext());
+        }
+
+        public static ILedgerDataAccessor GetLedgerDataAccessor()
+        {
+            return new LedgerDataAccessor(new AllieContext());
+        }
     }
 }

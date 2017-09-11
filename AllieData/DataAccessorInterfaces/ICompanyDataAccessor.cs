@@ -11,7 +11,9 @@ namespace AllieData.DataAccessorInterfaces
     {
         IEnumerable<Company> GetAll();
         Company Get(int id);
-        void Insert(Company company);
+        Company Get(string name);
+        //void Insert(Company company);
+        Company Insert(Company company);
         void Update(Company company);
         void Delete(int id);
     }

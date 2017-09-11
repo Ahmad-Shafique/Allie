@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Allie.Models.UserModel>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <strong>Employee List</strong>
+                    <a href="/Employee/Create" class="pull-right"><i class="glyphicon glyphicon-plus"></i> AddNew</a>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>password</th>
+                            <th>usertype</th>
+                            <th>Email</th>
+                            <th>CompanyId</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.UserId)</td>
+                                <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Password)</td>
+                                <td>@Html.DisplayFor(modelItem => item.UserType)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                <td>@Html.DisplayFor(modelItem => item.CompanyId)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                               
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

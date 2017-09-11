@@ -9,6 +9,8 @@ namespace AllieData
 {
     public class AllieContext : DbContext
     {
+        
+
         public DbSet<Company> Companies { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
@@ -18,5 +20,8 @@ namespace AllieData
         public DbSet<TransactionType> TransactionTypes { get; set; }
         public DbSet<Journal> Journals { get; set; }
         public DbSet<Ledger> Ledgers { get; set; }
+        public DbSet<IncomeStatement> IncomeStatements { get; set; }
+        public DbSet<Voucher> Vouchers { get; set; }
+        public DbSet<TransactionDetail> TransactionDetails { get; set; }
     }
 }
