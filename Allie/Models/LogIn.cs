@@ -14,7 +14,8 @@ namespace Allie.Models
 
         public static bool Validate(LogIn log)
         {
-           /* int valid = 0;
+            /*
+            int valid = 0;
             if (log.UserMail != null && log.Password != null)
             {
                 if (Regex.IsMatch(log.UserMail, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
@@ -23,10 +24,12 @@ namespace Allie.Models
                     valid++;
             }
             
-            if (valid == 2)*/
+            if (valid == 2)
                 return true;
-            //else
-              //  return false;
+            else
+                return false;
+             */
+            return true;
         }
     }
 }

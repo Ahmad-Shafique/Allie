@@ -1,6 +1,8 @@
 ﻿@model Allie.Models.LogIn
 <!DOCTYPE html>
 
+
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -9,7 +11,7 @@
 <body>
     <div align="center">
 
-        <form action="Index" method="post">
+        <form method="post">
             @Html.AntiForgeryToken()
 
             UserMail: <input type="text" name="UserMail" />&nbsp; 
@@ -19,6 +21,8 @@
             <input type="submit" value="Log In" />
 
         </form>
+        <label style="color:red">@ViewBag.ErrorMessage</label>
+       
     </div>
 </body>
 </html>

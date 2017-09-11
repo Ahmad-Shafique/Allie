@@ -22,9 +22,9 @@ namespace AllieService.Services
             accessor.Delete(id);
         }
 
-        public User Get(int id)
+        public User Get(string username)
         {
-            return accessor.Get(id);
+            return accessor.Get(username);
         }
 
         public IEnumerable<User> GetAll()
