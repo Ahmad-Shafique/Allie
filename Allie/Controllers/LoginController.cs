@@ -36,7 +36,9 @@ namespace Allie.Controllers
                     //if (log.Password == "1")
                     {
                         Session["LoggedIn"] = true;
-                        Session["UserMail"] = log.UserMail;
+                        Session["UserId"] = user.UserId;
+                        Session["UserName"] = user.UserName;
+                        Session["CompanyId"] = user.CompanyId;
                         return RedirectToAction("Index", "UserHome");
                     }
                     ViewBag.ErrorMessage = "Incorrect username or password";

@@ -69,6 +69,7 @@
     <Compile Include="DataAccessors\TransactionTypeAccessor.cs" />
     <Compile Include="DataAccessors\UserDataAccessor.cs" />
     <Compile Include="DataAccessors\UserTypeDataAccessor.cs" />
+    <Compile Include="HelperFunctions\LinqSelectQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

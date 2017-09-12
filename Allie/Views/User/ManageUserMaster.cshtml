@@ -1,0 +1,46 @@
+﻿@model AllieEntity.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ManageUserMaster</title>
+</head>
+<body>
+    <div> 
+        <table>
+            <tr>
+                <th>User Id</th>
+                <th>User Name</th>
+                <th>Password</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>User Type</th>
+                <th>Options</th>
+            </tr>
+            @foreach (var user in ViewBag.Users)
+            {
+                <tr>
+                    <td>user.UserName</td>
+                    <td>user.Password</td>
+                    <td>user.Address</td>
+                    <td>user.Phone</td>
+                    <td>user.Email</td>
+                    <td>user.UserType</td>
+                    <td>
+                        @Html.ActionLink("Edit" , "Edit",new { id = user.id})
+                        <a href="/User/Edit/@user.UserId"><i class="glyphicon glyphicon-edit"></i></a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a href="/User/Delete/@user.UserId"><i class="glyphicon glyphicon-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

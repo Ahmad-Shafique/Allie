@@ -15,5 +15,6 @@ namespace AllieService.ServiceInterfaces
         void Update(User user);
         void Delete(int id);
         void ChangePassword(int id, string password);
+        IEnumerable<User> GetCompanyUsers(int companyId);
     }
 }

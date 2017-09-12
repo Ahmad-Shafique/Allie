@@ -46,5 +46,10 @@ namespace AllieService.Services
         {
             accessor.ChangePassword(id, password);
         }
+
+        public IEnumerable<User> GetCompanyUsers(int companyId)
+        {
+            return accessor.GetCompanyUsers(companyId);
+        }
     }
 }

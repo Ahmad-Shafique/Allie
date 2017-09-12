@@ -177,6 +177,9 @@
     <Content Include="Views\Transaction\DeleteWithRollBack.cshtml" />
     <Content Include="Views\Transaction\DeleteWithoutRollBack.cshtml" />
     <Content Include="Views\Transaction\Edit.cshtml" />
+    <Content Include="Views\User\ManageUserMaster.cshtml" />
+    <Content Include="Views\User\View.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -61,5 +61,10 @@ namespace AllieData.DataAccessors
             context.SaveChanges();
             
         }
+
+        public IEnumerable<User> GetCompanyUsers(int companyId)
+        {
+            return context.Users.Where(user => user.CompanyId == companyId);
+        }
     }
 }

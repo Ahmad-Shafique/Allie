@@ -61,5 +61,16 @@ namespace Allie.Controllers
             
             return View(user);
         }
+
+        [HttpGet]
+        public ActionResult ManageUserMaster()
+        {
+            IEnumerable<AllieEntity.User> UsersList = service.GetCompanyUsers(Convert.ToInt32(Session["CompanyID"].ToString()));
+            ViewBag["Users"] = UsersList;
+            return View();
+        }
+
+
+        
     }
 }
