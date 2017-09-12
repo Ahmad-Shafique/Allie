@@ -1,4 +1,4 @@
-﻿@model AllieEntity.User
+﻿@model IEnumerable<AllieEntity.User>
 @{
     Layout = null;
 }
@@ -23,19 +23,20 @@
                 <th>User Type</th>
                 <th>Options</th>
             </tr>
-            @foreach (var user in ViewBag.Users)
+            @foreach (var user in Model)
             {
                 <tr>
-                    <td>user.UserName</td>
-                    <td>user.Password</td>
-                    <td>user.Address</td>
-                    <td>user.Phone</td>
-                    <td>user.Email</td>
-                    <td>user.UserType</td>
+                    <td>@Html.DisplayFor(modelItem =>user.UserName )</td>
+                    <td>@Html.DisplayFor(modelItem =>user.Password)</td>
+                    <td>@Html.DisplayFor(modelItem => user.Address)</td>
+                    <td>@Html.DisplayFor(modelItem => user.Phone)</td>
+                    <td>@Html.DisplayFor(modelItem => user.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => user.UserType)</td>
                     <td>
-                        @Html.ActionLink("Edit" , "Edit",new { id = user.id})
+                        @Html.ActionLink("Edit" , "Edit",new { id = user.UserId})
                         <a href="/User/Edit/@user.UserId"><i class="glyphicon glyphicon-edit"></i></a>
                         &nbsp;&nbsp;&nbsp;
+                        @Html.ActionLink("Delete", "Delete", new { id = user.UserId })
                         <a href="/User/Delete/@user.UserId"><i class="glyphicon glyphicon-trash"></i></a>
                     </td>
                 </tr>

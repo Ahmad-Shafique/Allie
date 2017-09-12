@@ -22,6 +22,7 @@ namespace Allie.Controllers
         [HttpPost]
         public ActionResult CreateJournal(Journal journal )
         {
+            AllieService.ServiceFactory.GetJournalServices().Insert(journal);
             return RedirectToAction("Index", "UserHome");
         }
         [HttpGet]

@@ -65,9 +65,13 @@ namespace Allie.Controllers
         [HttpGet]
         public ActionResult ManageUserMaster()
         {
-            IEnumerable<AllieEntity.User> UsersList = service.GetCompanyUsers(Convert.ToInt32(Session["CompanyID"].ToString()));
-            ViewBag["Users"] = UsersList;
-            return View();
+            if (Session["CompanyID"] != null)
+            {
+                IEnumerable<AllieEntity.User> UsersList = service.GetCompanyUsers(Convert.ToInt32(Session["CompanyID"].ToString()));
+
+                return View(UsersList);
+            }
+            return RedirectToAction("Index", "UserHome");
         }
 
         [HttpGet]

@@ -90,8 +90,8 @@ Nikunja-2<br>*@
                 <div class="dropdown">
                     <button class="dropbtn">Account</button>
                     <div class="dropdown-content">
-                        <a href="/Home/CreateCompany">CreateAccount</a>
-                        <a href="/Home/CreateCompany">Manage Account</a>
+                        @Html.ActionLink("Create User", "CreateUser", "User")
+                        @Html.ActionLink("Manage User", "ManageUser", "User")
 
                     </div>
                 </div>
