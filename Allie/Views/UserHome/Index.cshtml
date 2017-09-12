@@ -110,7 +110,7 @@ Nikunja-2<br>*@
                 <div class="dropdown">
                     <button class="dropbtn">Transaction</button>
                     <div class="dropdown-content">
-                        @Html.ActionLink("Create Transaction", "CreateTransaction", "Transaction")
+                        @Html.ActionLink("Create Transaction", "Create", "Transaction")
                         @Html.ActionLink("Manage Transaction", "ManageTransaction", "Transaction")
 
                     </div>
@@ -120,8 +120,18 @@ Nikunja-2<br>*@
                 <div class="dropdown">
                     <button class="dropbtn">Voucher</button>
                     <div class="dropdown-content">
-                        <a href="#">Create Voucher</a>
-                        <a href="#">Manage Voucher</a>
+                        @Html.ActionLink("Create Voucher", "CreateVoucher", "Voucher")
+                        @Html.ActionLink("Manage Voucher", "ManageVoucher", "Voucher")
+
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button class="dropbtn">Jornal</button>
+                    <div class="dropdown-content">
+                        @Html.ActionLink("Create Journal", "CreateJournal", "Journal")
+                        @Html.ActionLink("Manage Journal", "ManageJournal", "Journal")
 
                     </div>
                 </div>
