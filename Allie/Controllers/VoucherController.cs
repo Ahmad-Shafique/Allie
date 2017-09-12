@@ -26,7 +26,7 @@ namespace Allie.Controllers
             if (ModelState.IsValid)
             {
 
-                //ServiceFactory.GetVoucherServices.Insert(voucher);
+                ServiceFactory.GetVoucherServices().Insert(voucher);
                 return RedirectToAction("Index", "UserHome");
             }
             return View(voucher);
