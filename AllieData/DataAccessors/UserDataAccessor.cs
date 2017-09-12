@@ -24,10 +24,17 @@ namespace AllieData.DataAccessors
             context.SaveChanges();
         }
 
+
         public User Get(string username)
         {
             //return context.Users.SingleOrDefault(x => x.UserName == username);
             return context.Users.SingleOrDefault(u => u.UserName == username);
+        }
+
+        public User Get(int id)
+        {
+            //return context.Users.SingleOrDefault(x => x.UserName == username);
+            return context.Users.SingleOrDefault(u => u.UserId == id);
         }
 
         public IEnumerable<User> GetAll()
