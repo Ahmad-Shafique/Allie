@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AllieEntity.Ledger>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ManagLedger</title>
+</head>
+<body>
+    <fieldset>
+        <legend> Manage Ledger </legend>
+        <table width="90%">
+            <tr bgcolor="#00FF00">
+                <th>Ledger Name</th>
+                <th>Ledger Description</th>
+                <th>Option</th>
+            </tr>
+            @foreach (var ledger in Model)
+            {
+            <tr align="center">
+                @*<td>@Html.DisplayFor(modelItem => ledger.Id)</td>*@
+                <td>@Html.DisplayFor(modelItem => ledger.LedgerName)</td>
+                <td>@Html.DisplayFor(modelItem => ledger.LedgerPeriod)</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = ledger.Id })
+                    <a href="/User/Edit/@ledger.Id"><i class="glyphicon glyphicon-edit"></i></a>
+                    &nbsp;&nbsp;&nbsp;
+                    @Html.ActionLink("Delete", "Delete", new { id = ledger.Id })
+                    <a href="/User/Delete/@ledger.Id"><i class="glyphicon glyphicon-trash"></i></a>
+                </td>
+                
+            </tr>
+            }
+        </table>
+    </fieldset>
+</body>
+</html>

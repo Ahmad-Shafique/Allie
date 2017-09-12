@@ -45,10 +45,10 @@ namespace AllieData.DataAccessors
 
             t.Id =ledger.Id;
             t.LedgerName = ledger.LedgerName;
-            t.LedgerPeriod =ledger.LedgerPeriod;
+            t.LedgerPeriod = ledger.LedgerPeriod;
 
             context.SaveChanges();
         }
-
+        
     }
 }
