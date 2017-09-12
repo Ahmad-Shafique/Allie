@@ -70,7 +70,26 @@ namespace Allie.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Edit(int id) {
+            User user = service.Get(id);
+            return View(user);
+        }
 
-        
+        [HttpPost]
+        public ActionResult Edit(User user)
+        {
+            service.Update(user);
+            return RedirectToAction("ManageUserMaster");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            service.Delete(id);
+            return RedirectToAction("ManageUserMaster");
+        }
+
+
     }
 }

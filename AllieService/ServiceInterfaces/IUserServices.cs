@@ -11,6 +11,7 @@ namespace AllieService.ServiceInterfaces
     {
         IEnumerable<User> GetAll();
         User Get(string username);
+        User Get(int id);
         void Insert(User user);
         void Update(User user);
         void Delete(int id);

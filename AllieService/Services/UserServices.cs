@@ -27,6 +27,11 @@ namespace AllieService.Services
             return accessor.Get(username);
         }
 
+        public User Get(int username)
+        {
+            return accessor.Get(username);
+        }
+
         public IEnumerable<User> GetAll()
         {
             return accessor.GetAll();
