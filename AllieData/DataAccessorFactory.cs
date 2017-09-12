@@ -54,5 +54,15 @@ namespace AllieData
         {
             return new LedgerDataAccessor(new AllieContext());
         }
+
+        public static IJournalDataAccessor GetJournalDataAccessor()
+        {
+            return new JournalDataAccessor(new AllieContext());
+        }
+
+        public static IVoucherDataAccessor GetVoucherDataAccessor()
+        {
+            return new VoucherDataAccessor(new AllieContext());
+        }
     }
 }

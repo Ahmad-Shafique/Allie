@@ -18,27 +18,36 @@ namespace AllieData.DataAccessors
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            Journal c = Context.Journals.SingleOrDefault(x => x.Id == id);
+            Context.Journals.Remove(c);
+            Context.SaveChanges();
+            return true;
         }
 
         public Journal Get(int id)
         {
-            throw new NotImplementedException();
+            return Context.Journals.SingleOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<Journal> GetAll()
         {
-            throw new NotImplementedException();
+            return Context.Journals.ToList();
         }
 
         public bool Insert(Journal journal)
         {
-            throw new NotImplementedException();
+            Context.Journals.Add(journal);
+            Context.SaveChanges();
+            //return Context.Journals.SingleOrDefault(x => x.JournalName == journal.JournalName);
+            return true;
         }
 
         public bool Update(Journal journal)
         {
-            throw new NotImplementedException();
+            this.Delete(journal.Id);
+            this.Insert(journal);
+            Context.SaveChanges();
+            return true;
         }
     }
 }

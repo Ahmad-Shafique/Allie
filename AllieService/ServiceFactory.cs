@@ -55,5 +55,16 @@ namespace AllieService
         {
             return new LedgerServices(DataAccessorFactory.GetLedgerDataAccessor());
         }
+
+        public static IJournalServices GetJournalServices()
+        {
+            return new JournalServices(DataAccessorFactory.GetJournalDataAccessor());
+        }
+
+        public static IVoucherServices GetVoucherServices()
+        {
+            return new VoucherServices(DataAccessorFactory.GetVoucherDataAccessor());
+        }
+
     }
 }

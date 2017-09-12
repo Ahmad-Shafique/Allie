@@ -18,27 +18,35 @@ namespace AllieData.DataAccessors
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            Voucher c = Context.Vouchers.SingleOrDefault(x => x.Id == id);
+            Context.Vouchers.Remove(c);
+            Context.SaveChanges();
+            return true;
         }
 
         public Voucher Get(int id)
         {
-            throw new NotImplementedException();
+            return Context.Vouchers.SingleOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<Voucher> GetAll()
         {
-            throw new NotImplementedException();
+            return Context.Vouchers.ToList();
         }
 
         public bool Insert(Voucher voucher)
         {
-            throw new NotImplementedException();
+            Context.Vouchers.Add(voucher);
+            Context.SaveChanges();
+            return true;
         }
 
         public bool Update(Voucher voucher)
         {
-            throw new NotImplementedException();
+            this.Delete(voucher.Id);
+            this.Insert(voucher);
+            Context.SaveChanges();
+            return true;
         }
     }
 }
