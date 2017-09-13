@@ -38,6 +38,20 @@ namespace AllieData.DataAccessors
             return context.Transactions.Where(x => x.CompanyId == companyId).ToList();
         }
 
+        public IEnumerable<Transaction> GetAll(int companyId, DateTime period)
+        {
+            return context.Transactions.Where
+                (x => x.CompanyId == companyId 
+                && x.TransactionDate.Month == period.Month 
+                && x.TransactionDate.Year == period.Year)
+                .ToList();
+        }
+
+        public IEnumerable<Transaction> GetByJournal(int journalId)
+        {
+            return context.Transactions.Where(x => x.JournalId == journalId).ToList();
+        }
+
         public void Insert(Transaction tran)
         {
             context.Transactions.Add(tran);

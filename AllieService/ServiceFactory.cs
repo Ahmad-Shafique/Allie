@@ -65,6 +65,5 @@ namespace AllieService
         {
             return new VoucherServices(DataAccessorFactory.GetVoucherDataAccessor());
         }
-
     }
 }
