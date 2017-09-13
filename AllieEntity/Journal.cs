@@ -11,5 +11,6 @@ namespace AllieEntity
         public DateTime JournalPeriod { get; set; }
         public string Description { get; set; }
         public int LedgerId { get; set; }
+        public int CompanyId { get; set; }
     }
 }

@@ -12,5 +12,6 @@ namespace AllieEntity
         public int VoucherOwner { get; set; }
         public DateTime VoucherValidityDate { get; set; }
         public string VoucherDescription { get; set; }
+        public int CompanyId { get; set; }
     }
 }

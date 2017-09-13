@@ -20,17 +20,19 @@ namespace Allie.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CreateLedger(Ledger ledger)
+        public ActionResult CreateLedger(FormCollection form)
         {
-            if (ModelState.IsValid)
-            {
-               
+            
+            
+                string ComId = Session["CompanyID"].ToString();
+                Ledger ledger = new Ledger();
+                 
+                ledger.LedgerName= form["LedgerName"];
+                ledger.LedgerPeriod= Convert.ToDateTime(form["LedgerPeriod"]).Date;
+                ledger.CompanyId = (int)Session["CompanyID"];
                 ServiceFactory.GetLedgerServices().Insert(ledger);
+
                 return RedirectToAction("Index", "UserHome");
-            }
-
-
-            return View(ledger);
         }
         [HttpGet]
         public ActionResult ManageLedger()
@@ -39,9 +41,22 @@ namespace Allie.Controllers
             return View(LedgerList);
  
         }
+        //[HttpGet]
+        //public ActionResult Edit(Ledger ledger)
+        //{
+
+        //    service.Update(ledger);
+        //    return RedirectToAction("ManageLedger");
+
+        //}
         [HttpGet]
-        public ActionResult Edit(Ledger ledger)
+        public ActionResult Edit(FormCollection form)
         {
+            Ledger ledger = new Ledger();
+
+            ledger.LedgerName = form["LedgerName"];
+            ledger.LedgerPeriod = Convert.ToDateTime(form["LedgerPeriod"]).Date;
+            ledger.CompanyId = (int)Session["CompanyID"];
             service.Update(ledger);
             return RedirectToAction("ManageLedger");
 
