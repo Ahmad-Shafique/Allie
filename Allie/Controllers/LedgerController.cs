@@ -1,72 +1,89 @@
 ﻿using AllieEntity;
+using AllieService;
+using AllieService.ServiceInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using AllieService;
-using System.Web.Services.Description;
-using AllieService.ServiceInterfaces;
 
 namespace Allie.Controllers
 {
-    public class LedgerController : Controller
+    public class LedgerController : BaseController
     {
-        ILedgerServices service = ServiceFactory.GetLedgerServices();
         // GET: Ledger
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         [HttpGet]
-        public ActionResult CreateLedger()
+        public ActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult CreateLedger(FormCollection form)
+        public ActionResult Create(FormCollection Form)
         {
-            
-            
-                string ComId = Session["CompanyID"].ToString();
-                Ledger ledger = new Ledger();
-                 
-                ledger.LedgerName= form["LedgerName"];
-                ledger.LedgerPeriod= Convert.ToDateTime(form["LedgerPeriod"]).Date;
-                ledger.CompanyId = (int)Session["CompanyID"];
-                ServiceFactory.GetLedgerServices().Insert(ledger);
+            Ledger led = new Ledger();
+            led.LedgerPeriod = new DateTime(Convert.ToInt32(Form["Year"]), Convert.ToInt32(Form["Month"]) + 1, 1);
+            led.LedgerDescription = Form["Description"];
+            led.CompanyId = Convert.ToInt32(Session["CompanyId"]);
 
-                return RedirectToAction("Index", "UserHome");
+            Journal j = ServiceFactory.GetJournalServices().Get(led.CompanyId, led.LedgerPeriod);
+            List<Account> accList = new List<Account>();
+            List<int> idList = (List<int>)ServiceFactory.GetTransactionDetailServices().GetDistinctAccount(j.Id);
+            IAccountServices accService = ServiceFactory.GetAccountServices();
+
+            foreach (int i in idList)
+            {
+                Account acc = accService.Get(i);
+                accList.Add(acc);
+            }
+
+            Session["Ledger"] = led;
+            Session["Journal"] = j;
+            Session["AccountList"] = accList;
+
+            if (j.LedgerId != 0)
+            {
+                return RedirectToAction("GetStoredLedger", new { id = j.LedgerId });
+            }
+            return RedirectToAction("GenerateLedger");
         }
+
         [HttpGet]
-        public ActionResult ManageLedger()
+        public ActionResult GenerateLedger()
         {
-            IEnumerable<AllieEntity.Ledger> LedgerList=ServiceFactory.GetLedgerServices().GetAll();
-            return View(LedgerList);
- 
+            return View();
         }
-        //[HttpGet]
-        //public ActionResult Edit(Ledger ledger)
-        //{
 
-        //    service.Update(ledger);
-        //    return RedirectToAction("ManageLedger");
-
-        //}
-        [HttpGet]
-        public ActionResult Edit(FormCollection form)
+        [HttpPost]
+        public ActionResult GenerateLedger(FormCollection Form)
         {
-            Ledger ledger = new Ledger();
+            Ledger led = (Ledger)Session["Ledger"];
+            Journal jour = (Journal)Session["Journal"];
 
-            ledger.LedgerName = form["LedgerName"];
-            ledger.LedgerPeriod = Convert.ToDateTime(form["LedgerPeriod"]).Date;
-            ledger.CompanyId = (int)Session["CompanyID"];
-            service.Update(ledger);
-            return RedirectToAction("ManageLedger");
+            ServiceFactory.GetLedgerServices().Insert(led);
+            jour.LedgerId = led.Id;
+            ServiceFactory.GetJournalServices().Update(jour);
 
+            Session["Ledger"] = null;
+            Session["Journal"] = null;
+            Session["AccountList"] = null;
+            return RedirectToAction("Index", "Company");
         }
-        [HttpGet]
-        public ActionResult Delete(int id)
-        {
-            service.Delete(id);
-            return RedirectToAction("ManageLedger");
 
+        [HttpGet]
+        public ActionResult GetStoredLedger(int id)
+        {
+            return View(ServiceFactory.GetLedgerServices().Get(id));
+        }
+
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            return View(ServiceFactory.GetLedgerServices().Get(id));
         }
     }
 }
