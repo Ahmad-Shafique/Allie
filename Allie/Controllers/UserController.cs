@@ -93,6 +93,14 @@ namespace Allie.Controllers
             service.Delete(id);
             return RedirectToAction("ManageUserMaster");
         }
+        
+        public JsonResult GetUser(string name)
+        {
+            //IEnumerable<User> userlist = this.service.GetAll(name,Convert.ToInt32(Session["CompanyID"]));
+            IEnumerable<User> userlist = this.service.GetAll(name, 1);
+            //return PartialView("SearchResults", userlist);
+            return Json(userlist, JsonRequestBehavior.AllowGet);
+        }
 
 
     }

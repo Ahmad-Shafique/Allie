@@ -56,5 +56,10 @@ namespace AllieService.Services
         {
             return accessor.GetCompanyUsers(companyId);
         }
+        public IEnumerable<User> GetAll(string str,int companyId)
+        {
+            return accessor.GetAll(str,companyId);
+        }
+
     }
 }
