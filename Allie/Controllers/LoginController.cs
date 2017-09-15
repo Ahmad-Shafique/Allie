@@ -29,21 +29,25 @@ namespace Allie.Controllers
             if (LogIn.Validate(log))
             {
                 User user = ServiceFactory.GetUserServices().Get(log.UserMail);
-                if (user.UserName == log.UserMail )
-                //if (log.UserMail == "1")
+                if (user == null) { ViewBag.ErrorMessage = "Username not found"; }
+                else
                 {
-                    if (user.Password == log.Password)
-                    //if (log.Password == "1")
+                    if (user.UserName == log.UserMail)
+                    //if (log.UserMail == "1")
                     {
-                        Session["LoggedIn"] = true;
-                        Session["UserId"] = user.UserId;
-                        Session["UserName"] = user.UserName;
-                        Session["CompanyId"] = user.CompanyId;
-                        return RedirectToAction("Index", "UserHome");
+                        if (user.Password == log.Password)
+                        //if (log.Password == "1")
+                        {
+                            Session["LoggedIn"] = true;
+                            Session["UserId"] = user.UserId;
+                            Session["UserName"] = user.UserName;
+                            Session["CompanyId"] = user.CompanyId;
+                            return RedirectToAction("Index", "Company");
+                        }
+                        ViewBag.ErrorMessage = "Incorrect username or password";
                     }
-                    ViewBag.ErrorMessage = "Incorrect username or password";
                 }
-                ViewBag.ErrorMessage = "Username not found";
+                
                 return View();
             }
             

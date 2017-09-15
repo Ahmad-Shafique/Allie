@@ -24,15 +24,21 @@ namespace Allie.Controllers
         [HttpPost]
         public ActionResult Index(FormCollection form)
         {
-           
-            int id = Convert.ToInt32(Session["CompanyID"]);
-            //IEnumerable<Transaction> Results = services.GetAll(Convert.ToInt32(Session["CompanyID"]));
-            DateTime searchdate = Convert.ToDateTime(form["search"]).Date;
+            string str = form["search"].ToString();
+            if (str == "") {
+                return View(ServiceFactory.GetTransactionServices().GetAll((int)Session["CompanyId"]));
+            }
+            else
+            {
+                int id = Convert.ToInt32(Session["CompanyID"]);
+                //IEnumerable<Transaction> Results = services.GetAll(Convert.ToInt32(Session["CompanyID"]));
+                DateTime searchdate = Convert.ToDateTime(form["search"]).Date;
 
-            IEnumerable<Transaction> items = services.GetAll(id, searchdate);
+                IEnumerable<Transaction> items = services.GetAll(id, searchdate);
 
 
-            return View("index", items);
+                return View("index", items);
+            }
         }
 
         [HttpGet]
