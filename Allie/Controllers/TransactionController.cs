@@ -29,7 +29,7 @@ namespace Allie.Controllers
             //IEnumerable<Transaction> Results = services.GetAll(Convert.ToInt32(Session["CompanyID"]));
             DateTime searchdate = Convert.ToDateTime(form["search"]).Date;
 
-            IEnumerable<Transaction> items = services.GetAll(1, searchdate);
+            IEnumerable<Transaction> items = services.GetAll(id, searchdate);
 
 
             return View("index", items);
