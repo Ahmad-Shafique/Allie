@@ -109,6 +109,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\ExternalTransactionScript.js" />
     <Content Include="Scripts\GetStoredJournalScripts.js" />
     <Content Include="Scripts\TransactionCreateScripts.js" />
     <Content Include="Images\search.png" />
@@ -142,6 +143,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\IncomeModel.cs" />
     <Compile Include="Models\LogIn.cs" />
     <Compile Include="Models\TransactionVM.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -164,9 +166,7 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\UserHome\Index.cshtml" />
-    <Content Include="Views\Ledger\CreateLedger.cshtml" />
     <Content Include="Views\Ledger\ManageLedger.cshtml" />
-    <Content Include="Views\Transaction\CreateTransaction.cshtml" />
     <Content Include="Views\Transaction\ManageTransaction.cshtml" />
     <Content Include="Views\User\UserView.cshtml" />
     <Content Include="Views\Company\Create.cshtml" />
@@ -178,7 +178,7 @@
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\Account\Details.cshtml" />
-    <Content Include="Views\Transaction\Create.cshtml" />
+    <Content Include="Views\Transaction\CreateInternal.cshtml" />
     <Content Include="Views\Transaction\Index.cshtml" />
     <Content Include="Views\Transaction\Details.cshtml" />
     <Content Include="Views\Transaction\AddTransaction.cshtml" />
@@ -196,7 +196,6 @@
     <Content Include="Views\User\ManageUserMaster.cshtml" />
     <Content Include="Views\User\View.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
-    <Content Include="Views\Journal\CreateJournal.cshtml" />
     <Content Include="Views\Voucher\CreateVoucher.cshtml" />
     <Content Include="Views\Voucher\ManageVoucher.cshtml" />
     <Content Include="Views\UserTypes\Create.cshtml" />
@@ -204,7 +203,6 @@
     <Content Include="Views\UserTypes\Details.cshtml" />
     <Content Include="Views\UserTypes\Edit.cshtml" />
     <Content Include="Views\UserTypes\Index.cshtml" />
-    <Content Include="Views\Ledger\Edit.cshtml" />
     <Content Include="Views\Voucher\Edit.cshtml" />
     <Content Include="Views\Voucher\Delete.cshtml" />
     <Content Include="Views\Ledger\Create.cshtml" />
@@ -215,6 +213,11 @@
     <Content Include="Views\Ledger\Delete.cshtml" />
     <Content Include="Views\Ledger\Details.cshtml" />
     <Content Include="Views\Voucher\AssignOwner.cshtml" />
+    <Content Include="Views\Transaction\CreateExternal.cshtml" />
+    <Content Include="Views\Transaction\Create.cshtml" />
+    <Content Include="Views\IncomeStatement\Create.cshtml" />
+    <Content Include="Views\IncomeStatement\GenerateIncomeStatement.cshtml" />
+    <Content Include="Views\IncomeStatement\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -225,7 +228,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\IncomeStatement\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AllieData\AllieData.csproj">

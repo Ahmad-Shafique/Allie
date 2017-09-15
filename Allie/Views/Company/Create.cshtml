@@ -10,6 +10,119 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#submit').click(function () {
+
+                $(".error").hide();
+                var hasError = false;
+
+
+
+                var ComNamReg = /^.{4,100}$/;
+
+                var ComName = $("#CompanyName").val();
+                if (ComName == '') {
+                    $("#CompanyName").after('<span class="error">Enter Company Name.</span>');
+                    hasError = true;
+                }
+
+                else if (!ComNamReg.test(ComName)) {
+                    $("#CompanyName").after('<span class="error">Enter a valid Company Name</span>');
+                    hasError = true;
+                }
+
+
+
+                var ComLocReg = /^.{4,200}$/;
+
+                var ComLocation = $("#Location").val();
+                if (ComLocation == '') {
+                    $("#Location").after('<span class="error">Please enter Location.</span>');
+                    hasError = true;
+                }
+
+                else if (!ComLocReg.test(ComLocation)) {
+                    $("#Location").after('<span class="error">Please enter a valid Location</span>');
+                    hasError = true;
+                }
+
+
+                var ComPhnReg = /^((?:\S)){7,}$/;
+
+                var ComPhone = $("#Phone").val();
+                if (ComPhone == '') {
+                $("#Phone").after('<span class="error">Amount required</span>');
+                hasError = true;
+                }
+
+                else if (!ComPhnReg.test(ComPhone)) {
+                $("#Phone").after('<span class="error">Please enter a valid number</span>');
+                hasError = true;
+                }
+
+                var ComEmailReg = /^([\w-\.]+@@([\w-]+\.)+[\w-]{2,4})?$/;
+
+                var ComEmail = $("#Email").val();
+                if (ComEmail == '') {
+                    $("#Email").after('<span class="error">Amount required</span>');
+                    hasError = true;
+                }
+
+                else if (!ComEmailReg.test(ComEmail)) {
+                    $("#Email").after('<span class="error">Please enter a valid Email Address</span>');
+                    hasError = true;
+                }
+
+                var ComRevReg = /^\d*$/;
+
+                var ComRevenue = $("#Revenue").val();
+                if (ComRevenue == '') {
+                    $("#Revenue").after('<span class="error">Amount required</span>');
+                    hasError = true;
+                }
+
+                else if (!ComRevReg.test(ComRevenue)) {
+                    $("#Revenue").after('<span class="error">Please enter Revenue</span>');
+                    hasError = true;
+                }
+
+                var ComExpReg = /^\d*$/;
+
+                var ComExpense = $("#Expense").val();
+                if (ComExpense == '') {
+                    $("#Expense").after('<span class="error">Amount required</span>');
+                    hasError = true;
+                }
+
+                else if (!ComExpReg.test(ComExpense)) {
+                    $("#Expense").after('<span class="error">Please enter Expense</span>');
+                    hasError = true;
+                }
+
+                var ComProReg = /^\d*$/;
+
+                var ComProfit = $("#Profit").val();
+                if (ComProfit == '') {
+                    $("#Profit").after('<span class="error">Amount required</span>');
+                    hasError = true;
+                }
+
+                else if (!ComProReg.test(ComProfit)) {
+                    $("#Profit").after('<span class="error">Please enter Profit</span>');
+                    hasError = true;
+                }
+
+
+            if (hasError == true) { return false; }
+
+
+            
+
+        });
+    });
+    </script>
 </head>
 <body>
     @using (Html.BeginForm()) 
@@ -78,7 +191,7 @@
     
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Create" class="btn btn-default" id="submit"/>
                 </div>
             </div>
         </div>
