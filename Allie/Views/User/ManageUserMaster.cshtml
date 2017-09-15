@@ -11,61 +11,67 @@
     <title>ManageUserMaster</title>
     
 </head>
-<body>
-    <table align="center">
-        <tr>
-            <td>
-                Search
-            </td>
-            <td>@Html.TextBox("Search")<input type="submit" id="SearchBtn" value="Search" /></td>
-            
-            
-            
-            @*<td><input type="text" name="Search" /></td>
-            <td><input type="image" src="images/search.png" alt="Submit" width="25" height="25"></td>*@
-        </tr>
 
-    </table>
-    <div>
-        <table align="center">
-            <tr bgcolor="#00FF00">
+    <body>
+        <form method="post">
+            <table align="center">
+                <tr>
+                    <td>
+                        Search
+                    </td>
+                    @*<td>@Html.TextBox("Search")<input type="submit" id="SearchBtn" value="Search" /></td>*@
 
-                <th>User Name</th>
-                <th>Password</th>
-                <th>Address</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>User Type</th>
-                <th>Options</th>
-            </tr>
-            <tbody id="DataSearching">
-                @foreach (var user in Model)
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => user.UserName)</td>
-                        <td>@Html.DisplayFor(modelItem => user.Password)</td>
-                        <td>@Html.DisplayFor(modelItem => user.Address)</td>
-                        <td>@Html.DisplayFor(modelItem => user.Phone)</td>
-                        <td>@Html.DisplayFor(modelItem => user.Email)</td>
-                        <td>@Html.DisplayFor(modelItem => user.UserType)</td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = user.UserId })
-                            <a href="/User/Edit/@user.UserId"><i class="glyphicon glyphicon-edit"></i></a>
-                            &nbsp;&nbsp;&nbsp;
-                            @Html.ActionLink("Delete", "Delete", new { id = user.UserId })
-                            <a href="/User/Delete/@user.UserId"><i class="glyphicon glyphicon-trash"></i></a>
-                        </td>
+                    <td><input type="text" id="SearchString" placeholder="Search by User Name" name="SearchText" /><input type="submit"value="Search"/></td>
+
+
+
+
+                    @*<td><input type="text" name="Search" /></td>
+                    <td><input type="image" src="images/search.png" alt="Submit" width="25" height="25"></td>*@
+                </tr>
+
+            </table>
+            <div>
+                <table align="center">
+                    <tr bgcolor="#00FF00">
+
+                        <th>User Name</th>
+                        <th>Password</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>User Type</th>
+                        <th>Options</th>
                     </tr>
-                }
-            </tbody>
+                    <tbody id="DataSearching">
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => user.UserName)</td>
+                                <td>@Html.DisplayFor(modelItem => user.Password)</td>
+                                <td>@Html.DisplayFor(modelItem => user.Address)</td>
+                                <td>@Html.DisplayFor(modelItem => user.Phone)</td>
+                                <td>@Html.DisplayFor(modelItem => user.Email)</td>
+                                <td>@Html.DisplayFor(modelItem => user.UserType)</td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = user.UserId })
+                                    <a href="/User/Edit/@user.UserId"><i class="glyphicon glyphicon-edit"></i></a>
+                                    &nbsp;&nbsp;&nbsp;
+                                    @Html.ActionLink("Delete", "Delete", new { id = user.UserId })
+                                    <a href="/User/Delete/@user.UserId"><i class="glyphicon glyphicon-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
 
-        </table>
-    </div>
+                </table>
+            </div>
+        </form>
 
-   
 </body>
+
 </html>
-<script src="~/Scripts/jquery-3.1.1.js"></script>
+@*<script src="~/Scripts/jquery-3.1.1.js"></script>
 <script>
     $(document).ready(function () {
         
@@ -79,12 +85,14 @@
                 type: "post",
                 url: "/User/GetUser?SearchValue=" + SearchValue,
                 contentType: "html",
-                success: function (result) {
-                    if (result.length == 0) {
+                success: function (userlist) {
+                    console.log("JSON replay success");
+                    console.log(userlist.length);
+                    if (userlist.length == 0) {
                         SetData.append('<tr style="color:red"><td colspan="3">No Match Data</td></tr>')
                     }
                     else {
-                        $.each(result, function (index, value) {
+                        $.each(userlist, function (index, value) {
                             var Data = "<tr>" +
                                 "<td>" + value.UserName + "</td>" +
                                 "<td>" + value.Password + "</td>" +
@@ -101,5 +109,5 @@
             });
         });
     });
-</script>
+</script>*@
 

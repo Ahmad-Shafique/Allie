@@ -47,8 +47,10 @@ namespace AllieData.DataAccessors
 
             //IEnumerable<User> list = context.Users.Where(user => user.CompanyId == companyId).ToList();
             //IEnumerable<User> list =context.Users.Where(user => user.UserName.StartsWith(str) || SearchValue == null).ToList();
-            IEnumerable<User> list = context.Users.Where(user => user.UserName.Contains(str)).ToList();
-                return list;
+            //IEnumerable<User> list = context.Users.Where(user => user.UserName.Contains(str)).ToList();
+            IEnumerable<User> list = context.Users.Where(x => x.UserName.StartsWith(str) || str == null).ToList();
+            Console.WriteLine(str);
+            return list;
            
             
         }
