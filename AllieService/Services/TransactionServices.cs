@@ -31,6 +31,10 @@ namespace AllieService.Services
         {
             return accessor.GetAll();
         }
+        //public IEnumerable<Transaction> GetAll(int companyId, DateTime date)
+        //{
+        //    return accessor.GetAll(companyId, date);
+        //}
 
         public IEnumerable<Transaction> GetAll(int companyId)
         {
