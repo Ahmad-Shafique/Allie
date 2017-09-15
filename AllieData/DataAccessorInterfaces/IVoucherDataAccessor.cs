@@ -11,6 +11,7 @@ namespace AllieData.DataAccessorInterfaces
     {
 
         IEnumerable<Voucher> GetAll();
+        IEnumerable<Voucher> GetAll(int CompanyId);
         Voucher Get(int id);
         bool Insert(Voucher Voucher);
         bool Update(Voucher Voucher);

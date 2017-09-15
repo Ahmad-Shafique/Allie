@@ -17,5 +17,6 @@ namespace AllieData.DataAccessorInterfaces
         void Delete(int id);
         void ChangePassword(int id, string password);
         IEnumerable<User> GetCompanyUsers(int companyId);
+        IEnumerable<User> GetAll(string str, int companyId);
     }
 }

@@ -1,5 +1,6 @@
-﻿
-@{
+﻿@model IEnumerable<AllieEntity.Voucher>
+
+@{ 
     Layout = null;
 }
 
@@ -8,7 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>ManageTransaction</title>
+    <title>Manage Voucher</title>
 </head>
 <body>
     <fieldset>
@@ -28,13 +29,34 @@
             <tr bgcolor="#00FF00">
                 <th>Voucher Id </th>
                 <th>Amount</th>
-                <th>VoucherCreator</th>
+                @*<th>VoucherCreator</th>*@
                 <th>VoucherOwner</th>
                 <th>ValidityDate </th>
                 <th> Description</th>
                 <th>Options</th>
                 <td> </td>
             </tr>
+            <tbody id="DataSearching">
+                @foreach (var voucher in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => voucher.Id)</td>
+                        <td>@Html.DisplayFor(modelItem => voucher.Amount)</td>
+                        @*<td>@Html.DisplayFor(modelItem => voucher.VoucherCreator)</td>*@
+                        <td>@Html.DisplayFor(modelItem => voucher.VoucherOwner)</td>
+                        <td>@Html.DisplayFor(modelItem => voucher.VoucherValidityDate)</td>
+                        <td>@Html.DisplayFor(modelItem => voucher.VoucherDescription)</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = voucher.Id })
+                           
+                            &nbsp;&nbsp;&nbsp;
+                            @Html.ActionLink("Delete", "Delete", new { id = voucher.Id })
+                            <a href="/Voucher/Delete/@voucher.Id"><i class="glyphicon glyphicon-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
         </table>
     </fieldset>
 </body>

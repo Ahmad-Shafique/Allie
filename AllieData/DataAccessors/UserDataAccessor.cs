@@ -40,6 +40,19 @@ namespace AllieData.DataAccessors
         public IEnumerable<User> GetAll()
         {
             return context.Users.ToList();
+
+        }
+        public IEnumerable<User> GetAll(string str, int companyId)
+        {
+
+            //IEnumerable<User> list = context.Users.Where(user => user.CompanyId == companyId).ToList();
+            //IEnumerable<User> list =context.Users.Where(user => user.UserName.StartsWith(str) || SearchValue == null).ToList();
+            //IEnumerable<User> list = context.Users.Where(user => user.UserName.Contains(str)).ToList();
+            IEnumerable<User> list = context.Users.Where(x => x.UserName.StartsWith(str) || str == null).ToList();
+            Console.WriteLine(str);
+            return list;
+           
+            
         }
 
         public void Insert(User user)

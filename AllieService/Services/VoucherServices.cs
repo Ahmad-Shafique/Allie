@@ -31,6 +31,10 @@ namespace AllieService.Services
         {
             return accessor.GetAll();
         }
+        public IEnumerable<Voucher> GetAll(int CompanyId)
+        {
+            return accessor.GetAll(CompanyId);
+        }
 
         public bool Insert(Voucher Voucher)
         {

@@ -43,6 +43,20 @@ namespace Allie.Controllers
             return View("UserView");
         }
 
+        [HttpPost]
+        public ActionResult ManageUserMaster(FormCollection form)
+        {
+            string SearchString = form["SearchText"].ToString();
+            IEnumerable<User> Results = service.GetCompanyUsers(Convert.ToInt32(Session["CompanyID"]));
+            List<User> items = new List<AllieEntity.User>();
+            foreach (User user in Results)
+            {
+                if (user.UserName.Contains(SearchString)) items.Add(user);
+            }
+            Results = items;
+            return View("ManageUserMaster", Results);
+        }
+
         [HttpGet]
         public ActionResult CreateUser()
         {
@@ -93,6 +107,31 @@ namespace Allie.Controllers
             service.Delete(id);
             return RedirectToAction("ManageUserMaster");
         }
+        
+        //public JsonResult GetUser(string SearchValue)
+        //{
+        //    if (SearchValue != null) Console.WriteLine(SearchValue);
+        //    else Console.WriteLine("No string found");
+        //    IEnumerable<User> userlist = this.service.GetAll(SearchValue,Convert.ToInt32(Session["CompanyID"]));
+        //    //IEnumerable<User> userlist = this.service.GetAll(name, 1);
+        //    //IEnumerable<User> userlist = this.service.GetCompanyUsers(Convert.ToInt32(Session["CompanyID"]));
+        //    Response.Write("Search string is : " + SearchValue);
+        //    /*
+        //    var enumerator = userlist.GetEnumerator();
+        //    List<User> Results = new List<AllieEntity.User>();
+        //    foreach(User i in userlist)
+        //    {
+
+        //        if (i.UserName.Contains(name)) {
+        //            if (i == null) Response.Write("Username not found");
+        //            else Results.Add(i);
+        //        } 
+        //    }
+        //    userlist = Results;
+        //    */
+        //    //return PartialView("SearchResults", userlist);
+        //    return Json(userlist, JsonRequestBehavior.AllowGet);
+        //}
 
 
     }

@@ -119,7 +119,9 @@
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -202,6 +204,8 @@
     <Content Include="Views\UserTypes\Edit.cshtml" />
     <Content Include="Views\UserTypes\Index.cshtml" />
     <Content Include="Views\Ledger\Edit.cshtml" />
+    <Content Include="Views\Voucher\Edit.cshtml" />
+    <Content Include="Views\Voucher\Delete.cshtml" />
     <Content Include="Views\Ledger\Create.cshtml" />
     <Content Include="Views\Ledger\GenerateLedger.cshtml" />
     <Content Include="Views\Ledger\GetStoredLedger.cshtml" />

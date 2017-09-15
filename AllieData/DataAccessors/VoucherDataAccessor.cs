@@ -33,6 +33,11 @@ namespace AllieData.DataAccessors
         {
             return Context.Vouchers.ToList();
         }
+        public IEnumerable<Voucher> GetAll(int CompanyId)
+        {
+
+            return Context.Vouchers.Where(v=>v.CompanyId==CompanyId).ToList();
+        }
 
         public bool Insert(Voucher voucher)
         {
