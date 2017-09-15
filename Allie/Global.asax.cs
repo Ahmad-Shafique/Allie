@@ -16,7 +16,7 @@ namespace Allie
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<AllieContext>());
+           // Database.SetInitializer(new DropCreateDatabaseIfModelChanges<AllieContext>());
         }
     }
 }
