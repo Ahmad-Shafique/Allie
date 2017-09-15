@@ -1,0 +1,80 @@
+﻿@model AllieEntity.Voucher
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Voucher</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Amount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Amount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.VoucherCreator)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.VoucherCreator)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.VoucherOwner)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.VoucherOwner)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.VoucherValidityDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.VoucherValidityDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.VoucherDescription)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.VoucherDescription)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CompanyId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CompanyId)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>
