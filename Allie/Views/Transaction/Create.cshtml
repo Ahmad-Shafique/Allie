@@ -12,6 +12,50 @@
     <script src="~/Scripts/TransactionCreateScripts.js"></script>
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
+    <script type="text/javascript">
+         $(document).ready(function () {
+
+             $('#btn-submit').click(function () {
+
+                 $(".error").hide();
+                 var hasError = false;
+
+
+
+                 var TrDateReg = /^(?:\S).{3,}$/;
+
+                 var Trdate = $("#Date").val();
+                 if (Trdate == '') {
+                     $("#Date").after('<span class="error">Required Date.</span>');
+                     hasError = true;
+                 }
+
+                 else if (!TrDateReg.test(Trdate)) {
+                     $("#Date").after('<span class="error">Enter a valid Date</span>');
+                     hasError = true;
+                 }
+
+
+
+                 var TrDescReg = /^(?:\S).{1,}$/;
+
+                 var TrDesc = $("#TDescription").val();
+                 if (TrDesc == '') {
+                     $("#TDescription").after('<span class="error">Please enter Description.</span>');
+                     hasError = true;
+                 }
+
+                 else if (!TrDescReg.test(TrDesc)) {
+                     $("#TDescription").after('<span class="error">Please enter a valid description</span>');
+                     hasError = true;
+                 }
+
+                 
+                 if (hasError == true) { return false; }
+                 
+        });
+         });
+    </script>
 </head>
 <body>
     <div align="center">
@@ -25,11 +69,11 @@
                 <table>
                     <tr>
                         <td>Transaction Date</td>
-                        <td><input type="date" name="TransactionDate" value="" /></td>
+                        <td><input type="date" name="TransactionDate" value="" id="Date" /></td>
                     </tr>
                     <tr>
                         <td>Transaction Description</td>
-                        <td><textarea rows="2" cols="50" name="Description"></textarea></td>
+                        <td><textarea rows="2" cols="50" name="Description" id="TDescription"></textarea></td>
                     </tr>
                 </table>
                 <table width="40%">
@@ -62,7 +106,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center"><input type="submit" id="submit" value="Confirm Transaction" disabled=""/></td>
+                        <td colspan="2" align="center"><input type="submit" id="btn-submit" value="Confirm Transaction" disabled=""/></td>
                     </tr>
                     <tr>
                         <td colspan="2" align="center"><p id="okay">Please select 2  accounts of different transaction type</p></td>

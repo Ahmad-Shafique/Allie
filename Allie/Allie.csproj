@@ -164,9 +164,7 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\UserHome\Index.cshtml" />
-    <Content Include="Views\Ledger\CreateLedger.cshtml" />
     <Content Include="Views\Ledger\ManageLedger.cshtml" />
-    <Content Include="Views\Transaction\CreateTransaction.cshtml" />
     <Content Include="Views\Transaction\ManageTransaction.cshtml" />
     <Content Include="Views\User\UserView.cshtml" />
     <Content Include="Views\Company\Create.cshtml" />
@@ -196,7 +194,6 @@
     <Content Include="Views\User\ManageUserMaster.cshtml" />
     <Content Include="Views\User\View.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
-    <Content Include="Views\Journal\CreateJournal.cshtml" />
     <Content Include="Views\Voucher\CreateVoucher.cshtml" />
     <Content Include="Views\Voucher\ManageVoucher.cshtml" />
     <Content Include="Views\UserTypes\Create.cshtml" />
@@ -204,7 +201,6 @@
     <Content Include="Views\UserTypes\Details.cshtml" />
     <Content Include="Views\UserTypes\Edit.cshtml" />
     <Content Include="Views\UserTypes\Index.cshtml" />
-    <Content Include="Views\Ledger\Edit.cshtml" />
     <Content Include="Views\Voucher\Edit.cshtml" />
     <Content Include="Views\Voucher\Delete.cshtml" />
     <Content Include="Views\Ledger\Create.cshtml" />
