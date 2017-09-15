@@ -52,6 +52,8 @@
                             &nbsp;&nbsp;&nbsp;
                             @Html.ActionLink("Delete", "Delete", new { id = voucher.Id })
                             <a href="/Voucher/Delete/@voucher.Id"><i class="glyphicon glyphicon-trash"></i></a>
+                            &nbsp;&nbsp;&nbsp;
+                            @Html.ActionLink("Assign Owner", "AssignOwner", new { id = voucher.Id })
                         </td>
                     </tr>
                 }

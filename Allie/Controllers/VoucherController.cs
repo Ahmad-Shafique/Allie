@@ -27,7 +27,7 @@ namespace Allie.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                voucher.VoucherCreator = Convert.ToInt32(Session["UserId"]);
                 ServiceFactory.GetVoucherServices().Insert(voucher);
                 return RedirectToAction("Index", "UserHome");
             }
@@ -56,6 +56,21 @@ namespace Allie.Controllers
         public ActionResult Edit(Voucher v)
         {
             service.Update(v);
+            return RedirectToAction("ManageVoucher");
+        }
+
+        [HttpGet]
+        public ActionResult AssignOwner(int id)
+        {
+            ViewBag.AssignOwner = id;
+            return View(ServiceFactory.GetUserServices().GetCompanyUsers(Convert.ToInt32(Session["CompanyID"])));
+        }
+
+        public ActionResult Assign(int VoucherId, int OwnerId)
+        {
+            Voucher voucher = service.Get(VoucherId);
+            voucher.VoucherOwner = OwnerId;
+            service.Update(voucher);
             return RedirectToAction("ManageVoucher");
         }
     }

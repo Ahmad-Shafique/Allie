@@ -197,7 +197,6 @@
     <Content Include="Views\User\View.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\Journal\CreateJournal.cshtml" />
-    <Content Include="Views\Journal\ManageJournal.cshtml" />
     <Content Include="Views\Voucher\CreateVoucher.cshtml" />
     <Content Include="Views\Voucher\ManageVoucher.cshtml" />
     <Content Include="Views\UserTypes\Create.cshtml" />
@@ -215,6 +214,7 @@
     <Content Include="Views\Ledger\Edit.cshtml" />
     <Content Include="Views\Ledger\Delete.cshtml" />
     <Content Include="Views\Ledger\Details.cshtml" />
+    <Content Include="Views\Voucher\AssignOwner.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
