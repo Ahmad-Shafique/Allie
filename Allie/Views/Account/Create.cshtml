@@ -64,20 +64,6 @@
 
             if (hasError == true) { return false; }
 
-
-            @*var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-
-            var emailaddressVal = $("#UserEmail").val();
-            if(emailaddressVal == '') {
-                $("#UserEmail").after('<span class="error">Enter email address.</span>');
-                hasError = true;
-            }
-
-            else if(!emailReg.test(emailaddressVal)) {
-                $("#UserEmail").after('<span class="error">Enter a valid email address.</span>');
-                hasError = true;
-            }*@
-
         });
     });
     </script>
