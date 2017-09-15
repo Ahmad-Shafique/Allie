@@ -13,6 +13,7 @@ namespace AllieService.ServiceInterfaces
         IEnumerable<Transaction> GetAll(int companyId);
         //IEnumerable<Transaction> GetAll(int companyId, DateTime date);
         IEnumerable<Transaction> GetAll(int companyId, DateTime period);
+        IEnumerable<Transaction> GetAllByPeriodInterval(int companyId, DateTime startPeriod, DateTime endPeriod);
         IEnumerable<Transaction> GetByJournal(int journalId);
         Transaction Get(int id);
         void Insert(Transaction tran);
