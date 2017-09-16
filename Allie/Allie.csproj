@@ -225,6 +225,10 @@
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\EditUser.cshtml" />
     <Content Include="Views\Admin\DeleteUser.cshtml" />
+    <Content Include="Views\Admin\Type.cshtml" />
+    <Content Include="Views\Admin\EditType.cshtml" />
+    <Content Include="Views\Admin\CreateType.cshtml" />
+    <Content Include="Views\Admin\DeleteType.cshtml" />
     <Content Include="Views\IncomeStatement\Details.cshtml" />
     <Content Include="Views\IncomeStatement\Delete.cshtml" />
     <Content Include="Views\Transaction\AddTransactionExternal.cshtml" />

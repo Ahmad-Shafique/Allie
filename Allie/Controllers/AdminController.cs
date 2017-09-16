@@ -13,6 +13,8 @@ namespace Allie.Controllers
     {
         ICompanyServices service = ServiceFactory.GetCompanyServices();
         IUserServices uService = ServiceFactory.GetUserServices();
+        IUserTypeServices TService = ServiceFactory.GetUserTypeServices();
+        static UserType userType; 
         // GET: Admin
         [HttpGet]
         public ActionResult Index()
@@ -68,6 +70,60 @@ namespace Allie.Controllers
         {
             service.Delete(id);
             return RedirectToAction("ManageUserMaster");
+        }
+        [HttpGet]
+        public ActionResult Type()
+        {
+            IEnumerable<UserType> comp = TService.GetAll();
+            ViewBag.TypeList = comp;
+            return View(comp);
+        }
+
+        [HttpGet]
+        public ActionResult EditType(int id)
+        {
+            UserType user = TService.Get(id);
+            userType = user;
+            return View(user);
+        }
+
+        //[HttpPost]
+        //public ActionResult EditType(UserType type)
+        //{
+        //    //userType.Type = type.Type;
+        //    TService.Update(userType);
+        //    return RedirectToAction("Admin");
+        //}
+        [HttpPost]
+        public ActionResult EditType(string Type)
+        {
+            userType.Type = Type;
+            TService.Update(userType);
+            return RedirectToAction("Type","Admin");
+        }
+        [HttpGet]
+        public ActionResult CreateType()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateType(UserType user)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                TService.Insert(user);
+                return RedirectToAction("Type", "Admin");
+            }
+
+
+            return View(user);
+        }
+        [HttpGet]
+        public ActionResult DeleteType(int id )
+        {
+            TService.Delete(id);
+            return RedirectToAction("Type", "Admin");
         }
     }
 }
