@@ -14,6 +14,7 @@ namespace Allie.Controllers
         ICompanyServices service = ServiceFactory.GetCompanyServices();
         IUserServices uService = ServiceFactory.GetUserServices();
         IUserTypeServices TService = ServiceFactory.GetUserTypeServices();
+        static UserType userType; 
         // GET: Admin
         [HttpGet]
         public ActionResult Index()
@@ -82,14 +83,23 @@ namespace Allie.Controllers
         public ActionResult EditType(int id)
         {
             UserType user = TService.Get(id);
+            userType = user;
             return View(user);
         }
 
+        //[HttpPost]
+        //public ActionResult EditType(UserType type)
+        //{
+        //    //userType.Type = type.Type;
+        //    TService.Update(userType);
+        //    return RedirectToAction("Admin");
+        //}
         [HttpPost]
-        public ActionResult EditType(UserType type)
+        public ActionResult EditType(string Type)
         {
-            TService.Update(type);
-            return RedirectToAction("Admin");
+            userType.Type = Type;
+            TService.Update(userType);
+            return RedirectToAction("Type","Admin");
         }
         [HttpGet]
         public ActionResult CreateType()
