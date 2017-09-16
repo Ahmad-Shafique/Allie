@@ -1,40 +1,74 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8" />
+    <title>Company_Index</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+    <div class="container-fluid">
+        <div class="row" align="center" class="page-header">
+            <div class="col-md-12">
+                <h1>Welcome to Allie Accounting</h1>
             </div>
         </div>
-    </div>
-
-    <div class="container body-content">
-        @RenderBody()
+        <br />
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        <!--
+                <div class="row" >
+                <div class="col-md-1 well well-sm "><a href="/User/ManageUserMaster" class="" role="button">Employee</a> &nbsp;</div>
+                <div class="col-md-1 well well-sm"><a href="/Account/Index">Accounts</a>&nbsp;</div>
+                <div class="col-md-1 well well-sm"><a href="/Transaction/Index">Transactions</a>&nbsp;</div>
+                <div class="col-md-1 well well-sm"><a href="/Journal/Index">Journals</a>&nbsp;</div>
+                <div class="col-md-1 well well-sm"><a href="/Ledger/Index">Ledgers</a>&nbsp;</div>
+                <div class="col-md-2 well well-sm"><a href="/IncomeStatement/Create">Income Statements</a></div>
+                <div class="col-md-1 well well-sm"></div>
+                <div class="col-md-1 well well-sm"></div>
+                <div class="col-md-1 well well-sm"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
+                </div>
+                <br />
+        -->
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+        <div class="row" align="right">
+            <div class="col-md-6">
+                <ul class="pagination">
+                    <li>
+                        <a href="/User/ManageUserMaster" class="" role="button">Employee</a>
+                    </li>
+                    <li>
+                        <a href="/Account/Index">Accounts</a>
+                    </li>
+                    <li>
+                        <a href="/Transaction/Index">Transactions</a>
+                    </li>
+                    <li>
+                        <a href="/Journal/Index">Journals</a>
+                    </li>
+                    <li>
+                        <a href="/Ledger/Index">Ledgers</a>
+                    </li>
+                    <li>
+                        <a href="/IncomeStatement/Create">Income Statements</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md  well well-sm"><a href="">Logout</a></div>
+        </div>
+        <hr />
+        <div class="page-footer">Allie Footer Text</div>
+    </div>
 </body>
+
 </html>
