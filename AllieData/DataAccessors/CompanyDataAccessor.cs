@@ -26,7 +26,7 @@ namespace AllieData.DataAccessors
 
         public void Delete(int id)
         {
-            Company c = context.Companies.SingleOrDefault(x => x.Id == id);
+            Company c = context.Companies.SingleOrDefault(x =>x.Id == id);
             context.Companies.Remove(c);
             context.SaveChanges();
         }
