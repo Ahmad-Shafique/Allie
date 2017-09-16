@@ -9,60 +9,6 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Generate Ledger</title>
-    <script type="text/javascript">
-        $(document).ready(function () {
-
-            $('#btnsubmit').click(function () {
-
-                $(".error").hide();
-                var hasError = false;
-
-                var JorDesReg = /^(?:\S).{4,}$/;
-
-                var JorDes = $("#Description").val();
-                if (JorDes == '') {
-                    $("#Description").after('<span class="error">Please enter an account name.</span>');
-                    hasError = true;
-                }
-
-                else if (!JorDesReg.test(JorDes)) {
-                    $("#Description").after('<span class="error">Please enter a valid name of more than 3 characters</span>');
-                    hasError = true;
-                }
-
-                var JorMonthReg = /^.+$/;
-
-                var JorMon = $("#Month").val();
-                if (JorMon == '') {
-                    $("#Month").after('<span class="error">Enter Account Number.</span>');
-                    hasError = true;
-                }
-
-                else if (!JorMonReg.test(JorMon)) {
-                    $("#Month").after('<span class="error">Enter a valid number consisting of 7 alph-numeric characters</span>');
-                    hasError = true;
-                }
-
-
-
-                var JorYearReg = /^.+$/;
-
-                var JorYear = $("#Year").val();
-                if (JorYear == '') {
-                    $("#Year").after('<span class="error">Please enter an account name.</span>');
-                    hasError = true;
-                }
-
-                else if (!JorYearReg.test(JorYear)) {
-                    $("#Year").after('<span class="error">Please enter a valid name of more than 3 characters</span>');
-                    hasError = true;
-                }
-
-            if (hasError == true) { return false; }
-
-        });
-    });
-    </script>
 </head>
 <body>
     <div align="center">
@@ -72,13 +18,13 @@
 
             <table>
                 <tr>
-                    <td>Ledger Description</td>
-                    <td><textarea cols="50" rows="2" name="Description" id="Description"></textarea></td>
+                    <td>Journal Description</td>
+                    <td><textarea cols="50" rows="2" name="Description"></textarea></td>
                 </tr>
                 <tr>
                     <td>Select Month</td>
                     <td>
-                        <select name="Month" id="Month">
+                        <select name="Month">
                             @{
                                 string[] months = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
                             }
@@ -92,7 +38,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <select name="Year" id="Year">
+                        <select name="Year">
                             @for (int i = 2015; i <= 2020; i++)
                             {
                                 <option name="@i" value="@i">@i</option>
@@ -101,7 +47,7 @@
                     </td>
                     <td></td>
                 </tr>
-                <tr><td><input type="submit"  id="btnsubmit" value="Generate Ledger for the selected period" /></td></tr>
+                <tr><td><input type="submit"  value="Generate journal for the selected period" /></td></tr>
             </table>
             
         }
