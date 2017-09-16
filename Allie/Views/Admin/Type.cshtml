@@ -1,0 +1,46 @@
+﻿@model IEnumerable<AllieEntity.UserType>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Type</title>
+</head>
+<body>
+    <div align="center">
+        <h2> User Type List : </h2>
+        <table border="1">
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Option</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditType", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "DeleteType", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </table>
+        @Html.ActionLink("Create New", "CreateType","Admin")
+        @Html.ActionLink("Back", "Index", "Admin")
+
+
+
+
+        </div>
+</body>
+</html>
