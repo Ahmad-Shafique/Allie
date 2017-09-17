@@ -10,7 +10,7 @@ namespace AllieService.ServiceInterfaces
     public interface IUserServices
     {
         IEnumerable<User> GetAll();
-        User Get(string username);
+        User Get(string username, string password);
         User Get(int id);
         void Insert(User user);
         void Update(User user);

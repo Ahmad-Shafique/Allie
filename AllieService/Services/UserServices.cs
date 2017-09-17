@@ -16,15 +16,15 @@ namespace AllieService.Services
         {
             this.accessor = accessor;
         }
-        
+
         public void Delete(int id)
         {
             accessor.Delete(id);
         }
 
-        public User Get(string username)
+        public User Get(string username, string password)
         {
-            return accessor.Get(username);
+            return accessor.Get(username, password);
         }
 
         public User Get(int username)
@@ -56,9 +56,9 @@ namespace AllieService.Services
         {
             return accessor.GetCompanyUsers(companyId);
         }
-        public IEnumerable<User> GetAll(string str,int companyId)
+        public IEnumerable<User> GetAll(string str, int companyId)
         {
-            return accessor.GetAll(str,companyId);
+            return accessor.GetAll(str, companyId);
         }
 
     }

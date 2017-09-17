@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Allie.ValidationClasses;
+using AllieEntity;
+using AllieService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using AllieEntity;
 
 namespace Allie.Controllers
 {
@@ -15,22 +17,82 @@ namespace Allie.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult UserProfile()
+        {
+            int id = (int)Session["UserId"];
+            return View(ServiceFactory.GetUserServices().Get(id));
+        }
+
+        [HttpGet]
+        public ActionResult EditProfile(int id)
+        {
+            return View(ServiceFactory.GetUserServices().Get(id));
+        }
+        [HttpPost]
+        public ActionResult EditProfile(User user)
+        {
+            if (ValidateUser.IsValid(user))
+            {
+                ServiceFactory.GetUserServices().Update(user);
+                return RedirectToAction("UserProfile");
+            }
+            else
+            {
+                ViewBag.Error = null;
+                ViewBag.Error = ValidateUser.Message;
+                return View();
+            }
+        }
+
+        [HttpGet]
+        public ActionResult ChangePassword(int id)
+        {
+            return View(ServiceFactory.GetUserServices().Get(id));
+        }
+        [HttpPost]
+        public ActionResult ChangePassword(FormCollection Form)
+        {
+            User user = ServiceFactory.GetUserServices().Get((int)Session["UserId"]);
+            if(user.Password == Form["OldPassword"])
+            {
+                user.Password = Form["NewPassword"];
+                ServiceFactory.GetUserServices().ChangePassword(user.UserId, user.Password);
+                return RedirectToAction("ShowConfirmation");
+            }
+            ViewBag.Error = null;
+            ViewBag.Error = "Old password is not correct";
+            return View();
+        }
+        [HttpGet]
+        public ActionResult ShowConfirmation()
         {
             return View();
         }
+        [HttpGet]
+        public ActionResult Details()
+        {
+            return View(ServiceFactory.GetCompanyServices().Get((int)Session["CompanyId"]));
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            return View(ServiceFactory.GetCompanyServices().Get((int)Session["CompanyId"]));
+        }
         [HttpPost]
-        public ActionResult Create(Company company )
+        public ActionResult Edit(Company c)
         {
-            Company newCompany = AllieService.ServiceFactory.GetCompanyServices().Insert(company);
-            Session["CompanyId"] = newCompany.Id;
-            return RedirectToAction("CreateUser", "User");
+            if(ValidateCompany.IsValid(c))
+            {
+                ServiceFactory.GetCompanyServices().Update(c);
+                return RedirectToAction("Details");
+            }
+            else
+            {
+                ViewBag.Error = null;
+                ViewBag.Error = ValidateCompany.Message;
+                return View();
+            }
         }
-        public ActionResult Home()
-        {
-            return RedirectToAction("Index", "Home");
-        }
-
-
     }
 }

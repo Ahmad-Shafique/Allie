@@ -14,80 +14,55 @@
 </head>
 
 <body>
-    <form method="post">
-        <table align="center">
-            <tr>
-                <td>
-                    Search
-                </td>
-
-                <td><input type="text" id="SearchString" placeholder="Search by User Name" name="SearchText" /><input type="submit" value="Search" /></td>
-
-            </tr>
-
-        </table>
-
-        <div align="center">
-            <h2>List Of Employee</h2> 
+    <div align="center">
+        <form method="post">
             <table align="center">
-                <tr bgcolor="#00FF00">
-                    <th>User Id</th>
-                    <th>User Name</th>
-                    <th>Password</th>
-                    <th>Address</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>User Type</th>
-                    <th>Options</th>
+                <tr>
+                    <td>
+                        Search
+                    </td>
+
+                    <td><input type="text" id="SearchString" placeholder="Search by User Name" name="SearchText" /><input type="submit" value="Search" /></td>
+
                 </tr>
 
-                @*<tbody id="DataSearching">*@
-                @foreach (var user in Model)
-                {
-
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => user.UserId)</td>
-                        <td>@Html.DisplayFor(modelItem => user.UserName)</td>
-                        <td>@Html.DisplayFor(modelItem => user.Password)</td>
-                        <td>@Html.DisplayFor(modelItem => user.Address)</td>
-                        <td>@Html.DisplayFor(modelItem => user.Phone)</td>
-                        <td>@Html.DisplayFor(modelItem => user.Email)</td>
-                        <td>@Html.DisplayFor(modelItem => user.UserType)</td>
-                        <td>
-                            @Html.ActionLink("Edit", "EditUser", new { id = user.UserId })
-
-                            @Html.ActionLink("Delete", "DeleteUser", new { id = user.UserId })
-                            
-                        </td>
-                    </tr>
-
-                }
-                @*</tbody>*@
             </table>
-            <h2>COMPANY DETAILS</h2> 
-            <div align="center">
-                <table border="1">
-                    <tr>
-                        <th>Total Revenue</th>
-                        <th>Total Expence</th>
-                        <th> profit </th>
-                    </tr>
-                    <tr>
-                        <td>
-                            @ViewBag.CompanyDetails.TotalRevenue
-                        </td>
-                        <td>
-                            @ViewBag.CompanyDetails.TotalExpense
-                        </td>
-                        <td>
-                            @ViewBag.CompanyDetails.Profit
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </form>
 
+            <div align="center">
+                <h2>List Of Employee</h2>
+                <table align="center">
+                    <tr bgcolor="#00FF00">
+                        <th>Owner Id</th>
+                        <th>Owner Name</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                    </tr>
+
+                    @*<tbody id="DataSearching">*@
+                    @using AllieEntity
+                    @using AllieService
+
+                    @foreach (var user in Model)
+                    {
+
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => user.UserId)</td>
+                            <td>@Html.DisplayFor(modelItem => user.UserName)</td>
+                            <td>@Html.DisplayFor(modelItem => user.Address)</td>
+                            <td>@Html.DisplayFor(modelItem => user.Phone)</td>
+                            <td>@Html.DisplayFor(modelItem => user.Email)</td>
+                    </tr>
+
+                                }
+                    @*</tbody>*@
+                </table>
+
+                    @Html.ActionLink("To Dashboard", "Index")
+                </div>
+            </div>
+        </form>
+    </div>
 </body>
 
 </html>
